@@ -1,0 +1,57 @@
+package com.example.wifistrenghtchecker;
+
+import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+public class Activity2 extends ActionBarActivity {
+Intent intent;
+String level;
+String rss;
+String name;
+TextView s1,s2,s3;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_activity2);
+		 intent=getIntent();
+		  level  = intent.getStringExtra("Strength");
+		  rss=intent.getStringExtra("Rss");
+		  name=intent.getStringExtra("Name");
+		  s1=(TextView)findViewById(R.id.t1);
+		  s2=(TextView)findViewById(R.id.t2);
+		  s3=(TextView)findViewById(R.id.t3);
+		  String n;
+	     	n=s1.getText().toString();
+	     	n=n+" "+name;
+	     	s1.setText(n);
+	     	n=s2.getText().toString();
+	     	n=n+" "+rss;
+	     	s2.setText(n);
+	     	n=s3.getText().toString();
+	     	n=n+" "+level;
+	     	s3.setText(n);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity2, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

@@ -1,0 +1,62 @@
+package com.example.wifistrenghtchecker;
+
+
+
+
+
+import java.util.List;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.widget.TextView;
+
+
+public class MainActivity extends ActionBarActivity {
+
+	WifiManager wifi;
+    BroadcastReceiver receiver;
+
+    TextView textStatus;    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Setup UI
+        textStatus = (TextView) findViewById(R.id.textStatus);      
+
+        // Setup WiFi
+        wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        // Get WiFi status
+        WifiInfo info = wifi.getConnectionInfo();
+        textStatus.append("\n\nWiFi Status: " + info.toString());
+
+        // List available networks
+        List<WifiConfiguration> configs = wifi.getConfiguredNetworks();
+        for (WifiConfiguration config : configs) {
+            textStatus.append("\n\n" + config.toString());
+        }
+
+        // Register Broadcast Receiver
+        if (receiver == null)
+            receiver = new WiFiScanReceiver(this);
+
+        registerReceiver(receiver, new IntentFilter(
+                WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        Log.d(TAG, "onCreate()");
+    }
+
+    @Override
+    public void onStop() {
+        unregisterReceiver(receiver);
+            super.onStop();
+    }
+}

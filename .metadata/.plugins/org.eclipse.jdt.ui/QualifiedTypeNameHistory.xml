@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.content.BroadcastReceiver"/>
+<fullyQualifiedTypeName name="android.net.wifi.ScanResult"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.net.wifi.WifiInfo"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView"/>
+<fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+</qualifiedTypeNameHistroy>
